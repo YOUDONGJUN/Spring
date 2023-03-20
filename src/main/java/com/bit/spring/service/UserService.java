@@ -49,7 +49,6 @@ public class UserService implements UserDetailsService {
     public void update(UserDTO userDTO) {
         session.update(NAMESPACE + ".update", userDTO);
     }
-
 //    public void encrypt() {
 //        for (UserDTO u : selectAll()) {
 //            u.setPassword(passwordEncoder.encode(u.getPassword()));
