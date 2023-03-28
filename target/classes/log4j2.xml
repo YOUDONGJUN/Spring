@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Configuration xmlns="http://logging.apache.org/log4j/2.0/config">
+<Configuration>
 
     <Appenders>
 
         <Console name="console" target="SYSTEM_OUT">
             <PatternLayout pattern="[%c{1}] : %m at %d{yy-MM-dd HH:mm:ss}%n"/>
         </Console>
+
+        <RollingFile name="userAuthLog" fileName="c:\\log\user-account-activity.log"
+                     filePattern="/user-account-activity-%d{yyyy-MM-dd}-%i.log">
+            <PatternLayout pattern="[%c{1}] : %m at %d{yy-MM-dd HH:mm:ss}%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10MB"/>
+                <TimeBasedTriggeringPolicy module="true" interval="1"/>
+            </Policies>
+            <DefaultRolloverStrategy max="500" fileIndex="min"/>
+        </RollingFile>
+
+        <RollingFile name="userBoardLog" fileName="c:\\log\user-board-activity.log"
+                     filePattern="/user-board-activity-%d{yyyy-MM-dd}-%i.log">
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10MB"/>
+                <TimeBasedTriggeringPolicy module="true" interval="1"/>
+            </Policies>
+            <DefaultRolloverStrategy max="500" fileIndex="min"/>
+        </RollingFile>
 
     </Appenders>
 
@@ -16,10 +35,10 @@
         </Logger>
 
         <Logger name="com.bit.spring.handler.UserAuthSuccessHandler" level="INFO" additivity="false">
-            <AppenderRef ref="console"/>
+            <AppenderRef ref="userAuthLog"/>
         </Logger>
 
-        <Root level="TRACE">
+        <Root level="ERROR">
             <AppenderRef ref="console"/>
         </Root>
 
