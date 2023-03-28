@@ -8,9 +8,11 @@
     </settings>
     <typeAliases>
         <typeAlias type="com.bit.spring.model.UserDTO" alias="userDTO"/>
+        <typeAlias type="com.bit.spring.model.BoardDTO" alias="boardDTO"/>
     </typeAliases>
     <mappers>
         <mapper resource="config/mybatis/mapper/UserMapper.xml"/>
+        <mapper resource="config/mybatis/mapper/BoardMapper.xml"/>
     </mappers>
 </configuration>
 
