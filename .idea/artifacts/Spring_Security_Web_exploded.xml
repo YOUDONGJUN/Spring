@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="exploded-war" name="Spring_Security:Web exploded">
-    <output-path>$PROJECT_DIR$/out/artifacts/Spring_Security_Web_exploded</output-path>
+    <output-path>$PROJECT_DIR$/web</output-path>
     <root id="root">
       <element id="javaee-facet-resources" facet="Spring/web/Web" />
       <element id="directory" name="WEB-INF">
@@ -26,6 +26,12 @@
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:5.3.13.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:5.3.13.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:5.3.13.RELEASE" />
+          <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-core:2.20.0" />
+          <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-api:2.20.0" />
+          <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-web:2.20.0" />
+          <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-slf4j-impl:2.20.0" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:2.0.7" />
+          <element id="library" level="project" name="Maven: org.slf4j:jcl-over-slf4j:2.0.7" />
         </element>
       </element>
     </root>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.boardMapper">
+    <resultMap id="board" type="boardDTO">
+        <result property="writerNickname" column="nickname"/>
+    </resultMap>
+    <select id="selectAll" resultMap="board" parameterType="hashmap">
+        SELECT *
+        FROM board
+        INNER JOIN user
+        ON board.writerId = user.id
+        ORDER BY board.id DESC
+        LIMIT ${start}, ${size}
+    </select>
+    <select id="selectOne" resultMap="board" parameterType="int">
+        SELECT * FROM board
+        INNER JOIN user
+        ON board.writerId = user.id
+        WHERE board.id = #{id}
+    </select>
+    <insert id="insert" parameterType="boardDTO" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO board(title, content, writerId, entry_date, modify_date)
+        VALUES(#{title}, #{content}, #{writerId}, NOW(), NOW())
+    </insert>
+    <update id="update" parameterType="boardDTO">
+        UPDATE board
+        SET title=#{title},
+        content=#{content},
+        modify_date=NOW()
+        WHERE id=#{id}
+    </update>
+    <delete id="delete" parameterType="int">
+        DELETE FROM board
+        WHERE id=#{id}
+    </delete>
+    <select id="count" resultType="int">
+        SELECT COUNT(*)
+        FROM board
+    </select>
+    <select id="selectByKeyword" parameterType="map" resultMap="board">
+        SELECT * FROM board
+        INNER JOIN user
+        ON board.writerId = user.id
+        WHERE title LIKE concat('%', #{keyword}, '%')
+        OR
+        content LIKE concat('%', #{keyword}, '%')
+        ORDER BY board.id DESC
+        LIMIT ${start}, ${size}
+    </select>
+    <select id="countSearchResult" parameterType="string" resultType="int">
+        SELECT COUNT(*) FROM board
+        WHERE title LIKE concat('%', #{keyword}, '%')
+        OR
+        content LIKE concat('%', #{keyword}, '%')
+    </select>
+</mapper>
