@@ -10,5 +10,8 @@
         <module name="Spring" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="jx405_spring" target="19" />
+    </bytecodeTargetLevel>
   </component>
 </project>
