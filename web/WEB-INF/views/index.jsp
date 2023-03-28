@@ -1,11 +1,5 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: ehdwnsdb
-  Date: 2023-03-20
-  Time: 오전 10:35
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="core" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>인덱스</title>
@@ -21,12 +15,10 @@
                 <form method="post" action="/user/auth">
                     <label for="input-username">아이디</label>
                     <input type="text" name="username" class="form-control" id="input-username">
-
                     <label for="input-password">비밀번호</label>
                     <input type="password" name="password" class="form-control" id="input-password">
                     <button type="submit" class="btn btn-primary">로그인</button>
-                    <a class="btn btn-info" href="/user/register">회원 강비하기</a>
-
+                    <a class="btn btn-info" href="/user/register">회원 가입하기</a>
                 </form>
                 ${message}
             </div>

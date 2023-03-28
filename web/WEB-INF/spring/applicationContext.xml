@@ -3,7 +3,7 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
     <util:properties id="dataSourceProperties" location="classpath:config/mybatis/db.properties"/>
-
+    
     <bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="#{dataSourceProperties['datasource.driver']}"/>
         <property name="url" value="#{dataSourceProperties['datasource.url']}"/>

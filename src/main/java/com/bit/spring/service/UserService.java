@@ -4,6 +4,7 @@ import com.bit.spring.model.UserCustomDetails;
 import com.bit.spring.model.UserDTO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -32,6 +33,14 @@ public class UserService implements UserDetailsService {
         return session.selectOne(NAMESPACE + ".validate", username) == null;
     }
 
+    public boolean register(UserDTO attempt) {
+        if (validate(attempt.getUsername())) {
+            session.insert(NAMESPACE + ".register", attempt);
+            return true;
+        } else {
+            return false;
+        }
+    }
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
@@ -49,10 +58,5 @@ public class UserService implements UserDetailsService {
     public void update(UserDTO userDTO) {
         session.update(NAMESPACE + ".update", userDTO);
     }
-//    public void encrypt() {
-//        for (UserDTO u : selectAll()) {
-//            u.setPassword(passwordEncoder.encode(u.getPassword()));
-//            update(u);
-//        }
-//    }
+
 }
